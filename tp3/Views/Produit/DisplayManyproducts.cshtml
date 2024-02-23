@@ -1,0 +1,43 @@
+﻿@using tp3.Models
+@model tp3.Models.Produit
+@{
+    ViewBag.Title = "DisplayManyproducts";
+}
+<h2>List of Products</h2>
+
+@if (ViewData["ListeProduits"] != null)
+{
+    var produits = ViewData["ListeProduits"] as List<Produit>;
+    if (produits != null && produits.Any())
+    {
+        <table class="table table-bordered table-hover" style="margin-top:100px">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prix</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var produit in produits)
+                {
+                    <tr>
+                        <td>@produit.Id</td>
+                        <td>@produit.Name</td>
+                        <td>@produit.Prix</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Aucun produit trouvé!!!!!</p>
+    }
+}
+else
+{
+    <p>Aucune donnée de produit n'a été passée à la vue!!!!</p>
+}
+
+
